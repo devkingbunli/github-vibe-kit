@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+.venv/
+
+# AG Kit engine (installed per-project via npx @vudovn/ag-kit init)
+.agent/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/settings.json
+*.swp
