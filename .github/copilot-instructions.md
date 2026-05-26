@@ -1,8 +1,7 @@
-# GitHub Copilot — AG Kit Integration (GitHub Vibe Kit)
+# GitHub Copilot — GitHub Vibe Kit
 
-> This workspace uses **Antigravity Kit (AG Kit) 2026.5.13** via **GitHub Vibe Kit**.
+> This workspace uses **GitHub Vibe Kit**.
 > All rules below are MANDATORY and override default Copilot behavior.
-> Setup: run `npx @vudovn/ag-kit init` in your project root to install the `.agent/` engine.
 
 ---
 

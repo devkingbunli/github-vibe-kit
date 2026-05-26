@@ -1,14 +1,14 @@
 # 🚀 GitHub Vibe Kit
 
-> **AG Kit 2026.5.13 fully adapted for GitHub Copilot + VS Code**
+> **20 specialist AI agents · 45 skills · 14 workflow commands — fully integrated with GitHub Copilot + VS Code**
 
-A complete integration layer that brings the power of **20 specialist AI agents**, **45 skills**, and **14 workflow commands** to GitHub Copilot in VS Code — no Gemini CLI required.
+GitHub Vibe Kit gives your Copilot a team of specialist engineers. Instead of one generic AI, you get the right expert for every task — automatically.
 
 ---
 
 ## What is this?
 
-**GitHub Vibe Kit** is the bridge between [AG Kit](https://www.npmjs.com/package/@vudovn/ag-kit) and **GitHub Copilot**. It provides:
+**GitHub Vibe Kit** is a ready-to-use intelligence layer for GitHub Copilot. Drop it into any project and get:
 
 - ✅ **Auto-routing** — Copilot automatically selects the right specialist agent for every request
 - ✅ **14 workflow slash commands** — `/brainstorm`, `/debug`, `/plan`, `/create`, and more
@@ -40,7 +40,7 @@ git clone https://github.com/devkingbunli/github-vibe-kit.git
 bash setup.sh /path/to/your/project
 ```
 
-That's it. The script copies `.github/` and `.agent/` into your project — no extra downloads needed.
+That's it. Everything is copied into your project — no extra downloads, no extra tools.
 
 **3. Customize `.github/copilot-instructions.md`** — update the `YOUR PROJECT` section at the bottom with your stack and any project-specific notes.
 
@@ -157,17 +157,17 @@ github-vibe-kit/
 ## How It Works
 
 ```
-.github/copilot-instructions.md   ← Copilot reads this automatically (always-on)
-.github/prompts/*.prompt.md       ← You activate these manually via 📎 → Prompt...
+.github/copilot-instructions.md   ← Copilot reads this on every conversation
+.github/prompts/*.prompt.md       ← Activated manually via 📎 → Prompt...
           │
-          ▼  (instructs Copilot to read)
-.agent/agents/*.md                ← Specialist agent rules (installed by AG Kit)
-.agent/skills/*/SKILL.md          ← Domain knowledge modules
-.agent/scripts/*.py               ← Validation scripts
+          ▼
+.agent/agents/*.md                ← Specialist rules & personas
+.agent/skills/*/SKILL.md          ← Deep domain knowledge
+.agent/scripts/*.py               ← Checklist, audit, validation tools
 .agent/.shared/                   ← Design system data
 ```
 
-The `.github/` files are the **activation layer**. The `.agent/` folder (installed via `npx @vudovn/ag-kit init`) is the **engine**.
+The `.github/` folder is the **activation layer**. The `.agent/` folder is the **knowledge engine**. Both ship together in this repo.
 
 ---
 
@@ -181,13 +181,6 @@ Edit `.github/copilot-instructions.md` and replace the `YOUR PROJECT` section:
 **Stack:** Next.js 15 + TypeScript · Express API · PostgreSQL
 **Notes:** Any quirks, conventions, or environment details
 ```
-
----
-
-## Credits
-
-- **AG Kit** by [@vudovn](https://www.npmjs.com/package/@vudovn/ag-kit) — the agent/skill engine
-- **GitHub Vibe Kit** — Copilot integration layer
 
 ---
 
