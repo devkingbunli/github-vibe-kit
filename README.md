@@ -21,33 +21,30 @@ A complete integration layer that brings the power of **20 specialist AI agents*
 
 ### Prerequisites
 - [VS Code](https://code.visualstudio.com/) with [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) extension
-- [Node.js](https://nodejs.org/) 18+
 
 ### Installation
 
-**1. Clone this repository into your project root (or copy the files):**
+**1. Clone this repository:**
 
 ```bash
 git clone https://github.com/devkingbunli/github-vibe-kit.git
 ```
 
-**2. Copy `.github/` to your project root:**
+**2. Run the setup script pointing to your project:**
 
-```bash
-# From inside github-vibe-kit/
-cp -r .github/ /your/project/root/
+```powershell
+# Windows
+.\setup.ps1 C:\path\to\your\project
+
+# Linux / macOS
+bash setup.sh /path/to/your/project
 ```
 
-**3. Install AG Kit (the engine that powers the agents and skills):**
+That's it. The script copies `.github/` and `.agent/` into your project — no extra downloads needed.
 
-```bash
-cd /your/project/root
-npx @vudovn/ag-kit init
-```
+**3. Customize `.github/copilot-instructions.md`** — update the `YOUR PROJECT` section at the bottom with your stack and any project-specific notes.
 
-**4. Customize `.github/copilot-instructions.md`** — update the `YOUR PROJECT` section at the bottom with your stack, quirks, and environment details.
-
-**5. Reload VS Code** — Copilot will pick up the new instructions automatically.
+**4. Reload VS Code** — Copilot will pick up the new instructions automatically.
 
 ---
 

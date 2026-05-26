@@ -22,15 +22,12 @@ $dst = Join-Path $target ".github"
 Copy-Item -Path $src -Destination $dst -Recurse -Force
 Write-Host "      Done." -ForegroundColor Green
 
-# Step 2: Install AG Kit engine
-Write-Host "[2/3] Installing AG Kit engine (.agent/)..." -ForegroundColor Yellow
-Push-Location $target
-try {
-    npx @vudovn/ag-kit init
-    Write-Host "      Done." -ForegroundColor Green
-} finally {
-    Pop-Location
-}
+# Step 2: Copy .agent/ engine
+Write-Host "[2/3] Copying .agent/ engine to $target ..." -ForegroundColor Yellow
+$agentSrc = Join-Path $PSScriptRoot ".agent"
+$agentDst = Join-Path $target ".agent"
+Copy-Item -Path $agentSrc -Destination $agentDst -Recurse -Force
+Write-Host "      Done." -ForegroundColor Green
 
 # Step 3: Done
 Write-Host ""

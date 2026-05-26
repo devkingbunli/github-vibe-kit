@@ -19,10 +19,9 @@ echo "[1/3] Copying .github/ to $TARGET ..."
 cp -r "$SCRIPT_DIR/.github" "$TARGET/"
 echo "      Done."
 
-# Step 2: Install AG Kit engine
-echo "[2/3] Installing AG Kit engine (.agent/)..."
-cd "$TARGET"
-npx @vudovn/ag-kit init
+# Step 2: Copy .agent/ engine
+echo "[2/3] Copying .agent/ engine to $TARGET ..."
+cp -r "$SCRIPT_DIR/.agent" "$TARGET/"
 echo "      Done."
 
 # Step 3: Done
