@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Session Manager - AG Kit
+Session Manager - GitHub Vibe Kit
 =================================
 Analyzes project state, detects tech stack, tracks file statistics, and provides
 a summary of the current session.
@@ -85,22 +85,22 @@ def print_status(root: Path):
     features = detect_features(root)
     
     print("\n=== Project Status ===")
-    print(f"\n📁 Project: {info.get('name', root.name)}")
-    print(f"📂 Path: {root}")
-    print(f"🏷️  Type: {', '.join(info.get('stack', ['Generic']))}")
-    print(f"📊 Status: Active")
+    print(f"\nðŸ“ Project: {info.get('name', root.name)}")
+    print(f"ðŸ“‚ Path: {root}")
+    print(f"ðŸ·ï¸  Type: {', '.join(info.get('stack', ['Generic']))}")
+    print(f"ðŸ“Š Status: Active")
     
-    print("\n🔧 Tech Stack:")
+    print("\nðŸ”§ Tech Stack:")
     for tech in info.get('stack', []):
-        print(f"   • {tech}")
+        print(f"   â€¢ {tech}")
         
-    print(f"\n✅ Detected Modules/Features ({len(features)}):")
+    print(f"\nâœ… Detected Modules/Features ({len(features)}):")
     for feat in features:
-        print(f"   • {feat}")
+        print(f"   â€¢ {feat}")
     if not features:
         print("   (No distinct feature modules detected)")
         
-    print(f"\n📄 Files: {stats['total']} total files tracked")
+    print(f"\nðŸ“„ Files: {stats['total']} total files tracked")
     print("\n====================\n")
 
 def main():

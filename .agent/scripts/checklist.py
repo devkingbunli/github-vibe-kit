@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Master Checklist Runner - AG Kit
+Master Checklist Runner - GitHub Vibe Kit
 ==========================================
 
 Orchestrates all validation scripts in priority order.
@@ -43,16 +43,16 @@ def print_header(text: str):
     print(f"{Colors.BOLD}{Colors.CYAN}{'='*60}{Colors.ENDC}\n")
 
 def print_step(text: str):
-    print(f"{Colors.BOLD}{Colors.BLUE}🔄 {text}{Colors.ENDC}")
+    print(f"{Colors.BOLD}{Colors.BLUE}ðŸ”„ {text}{Colors.ENDC}")
 
 def print_success(text: str):
-    print(f"{Colors.GREEN}✅ {text}{Colors.ENDC}")
+    print(f"{Colors.GREEN}âœ… {text}{Colors.ENDC}")
 
 def print_warning(text: str):
-    print(f"{Colors.YELLOW}⚠️  {text}{Colors.ENDC}")
+    print(f"{Colors.YELLOW}âš ï¸  {text}{Colors.ENDC}")
 
 def print_error(text: str):
-    print(f"{Colors.RED}❌ {text}{Colors.ENDC}")
+    print(f"{Colors.RED}âŒ {text}{Colors.ENDC}")
 
 # Define priority-ordered checks
 CORE_CHECKS = [
@@ -127,26 +127,26 @@ def run_script(name: str, script_path: Path, project_path: str, url: Optional[st
 
 def print_summary(results: List[dict]):
     """Print final summary report"""
-    print_header("📊 CHECKLIST SUMMARY")
+    print_header("ðŸ“Š CHECKLIST SUMMARY")
     
     passed_count = sum(1 for r in results if r["passed"] and not r.get("skipped"))
     failed_count = sum(1 for r in results if not r["passed"] and not r.get("skipped"))
     skipped_count = sum(1 for r in results if r.get("skipped"))
     
     print(f"Total Checks: {len(results)}")
-    print(f"{Colors.GREEN}✅ Passed: {passed_count}{Colors.ENDC}")
-    print(f"{Colors.RED}❌ Failed: {failed_count}{Colors.ENDC}")
-    print(f"{Colors.YELLOW}⏭️  Skipped: {skipped_count}{Colors.ENDC}")
+    print(f"{Colors.GREEN}âœ… Passed: {passed_count}{Colors.ENDC}")
+    print(f"{Colors.RED}âŒ Failed: {failed_count}{Colors.ENDC}")
+    print(f"{Colors.YELLOW}â­ï¸  Skipped: {skipped_count}{Colors.ENDC}")
     print()
     
     # Detailed results
     for r in results:
         if r.get("skipped"):
-            status = f"{Colors.YELLOW}⏭️ {Colors.ENDC}"
+            status = f"{Colors.YELLOW}â­ï¸ {Colors.ENDC}"
         elif r["passed"]:
-            status = f"{Colors.GREEN}✅{Colors.ENDC}"
+            status = f"{Colors.GREEN}âœ…{Colors.ENDC}"
         else:
-            status = f"{Colors.RED}❌{Colors.ENDC}"
+            status = f"{Colors.RED}âŒ{Colors.ENDC}"
         
         print(f"{status} {r['name']}")
     
@@ -156,12 +156,12 @@ def print_summary(results: List[dict]):
         print_error(f"{failed_count} check(s) FAILED - Please fix before proceeding")
         return False
     else:
-        print_success("All checks PASSED ✨")
+        print_success("All checks PASSED âœ¨")
         return True
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Run AG Kit validation checklist",
+        description="Run GitHub Vibe Kit validation checklist",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -181,14 +181,14 @@ Examples:
         print_error(f"Project path does not exist: {project_path}")
         sys.exit(1)
     
-    print_header("🚀 ANTIGRAVITY KIT - MASTER CHECKLIST")
+    print_header("ðŸš€ GITHUB VIBE KIT - MASTER CHECKLIST")
     print(f"Project: {project_path}")
     print(f"URL: {args.url if args.url else 'Not provided (performance checks skipped)'}")
     
     results = []
     
     # Run core checks
-    print_header("📋 CORE CHECKS")
+    print_header("ðŸ“‹ CORE CHECKS")
     for name, script_path, required in CORE_CHECKS:
         script = project_path / script_path
         result = run_script(name, script, str(project_path))
@@ -202,7 +202,7 @@ Examples:
     
     # Run performance checks if URL provided
     if args.url and not args.skip_performance:
-        print_header("⚡ PERFORMANCE CHECKS")
+        print_header("âš¡ PERFORMANCE CHECKS")
         for name, script_path, required in PERFORMANCE_CHECKS:
             script = project_path / script_path
             result = run_script(name, script, str(project_path), args.url)

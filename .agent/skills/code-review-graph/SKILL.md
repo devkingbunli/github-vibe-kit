@@ -1,18 +1,18 @@
 ---
 name: code-review-graph
-description: Token-efficient code review using Tree-sitter AST graphs and MCP. Reduces AI assistant token usage by 6.8–49x by computing blast radius of changes instead of reading entire codebases. Uses SQLite graph database for structural analysis.
+description: Token-efficient code review using Tree-sitter AST graphs and MCP. Reduces AI assistant token usage by 6.8â€“49x by computing blast radius of changes instead of reading entire codebases. Uses SQLite graph database for structural analysis.
 when_to_use: "When reviewing code in large codebases (500+ files), when token costs are high, when making multi-file changes with cross-module dependencies, or when working with monorepos. Also for dead code detection, architecture visualization, and refactoring previews. NOT for small projects under 200 files with isolated single-file changes."
 allowed-tools: Read, Grep, Glob, Bash
 effort: medium
 ---
 
-# Code Review Graph — Token-Efficient Codebase Context via MCP
+# Code Review Graph â€” Token-Efficient Codebase Context via MCP
 
 > Reduce AI token usage by **6.8x average** (up to **49x** on monorepos) by giving the AI a structural map of your codebase instead of letting it read everything.
 
 ## Overview
 
-`code-review-graph` is an MCP server that uses **Tree-sitter** to parse your codebase into an AST graph stored in **SQLite**. When your AI assistant needs context for a task, it queries the graph first — getting only the files in the **blast radius** of your change — instead of reading every file in the directory.
+`code-review-graph` is an MCP server that uses **Tree-sitter** to parse your codebase into an AST graph stored in **SQLite**. When your AI assistant needs context for a task, it queries the graph first â€” getting only the files in the **blast radius** of your change â€” instead of reading every file in the directory.
 
 **Token Impact:**
 
@@ -22,11 +22,11 @@ effort: medium
 | httpx | 64,666 tokens | 14,090 tokens | **4.6x** |
 | Next.js monorepo (27K files) | 739,352 tokens | 15,049 tokens | **49.1x** |
 | Express.js (small) | Less benefit | Graph overhead > savings | **~1x** |
-| **Average across 6 repos** | — | — | **8.2x** |
+| **Average across 6 repos** | â€” | â€” | **8.2x** |
 
 > **Quality also improves:** Graph-assisted reviews score **8.8/10** vs **7.2/10** for naive reviews. Less noise = better signal = more accurate output.
 
-## 🛑 Auto-Bootstrap Protocol (MANDATORY TOOL USE For AI Agents)
+## ðŸ›‘ Auto-Bootstrap Protocol (MANDATORY TOOL USE For AI Agents)
 
 When invoked during `/plan` or standard usage on a mid-to-large project, **proactively check** if the user can benefit from graph analysis:
 1. **Step 1:** You MUST explicitly use your terminal/bash execution tool to run a quick check: `Get-Command code-review-graph` (Windows) or `which code-review-graph` (macOS/Linux).
@@ -38,39 +38,39 @@ When invoked during `/plan` or standard usage on a mid-to-large project, **proac
 
 ## When to Use vs When to Skip
 
-### ✅ Install it if:
+### âœ… Install it if:
 - Codebase is **500+ files**
 - You make **multi-file changes** with cross-module dependencies
 - You spend **$20+/month** on AI assistant tokens
 - You work with **monorepos**, microservices, or cross-package TypeScript
 - You want **better review quality** in addition to cost savings
 
-### ❌ Skip it if:
+### âŒ Skip it if:
 - Codebase is **under ~200 files** with isolated single-file changes
 - Heavy use of **dynamic patterns** (reflection, runtime code gen, dynamic imports)
-- You want **zero-maintenance** — the graph needs to stay in sync
+- You want **zero-maintenance** â€” the graph needs to stay in sync
 - Team hasn't standardized on an AI coding tool yet
 
-### ⚠️ Evaluate first if:
-- Codebase is **200–500 files** — benchmark before committing
-- Mix of **static and dynamic patterns** — test on representative commits
+### âš ï¸ Evaluate first if:
+- Codebase is **200â€“500 files** â€” benchmark before committing
+- Mix of **static and dynamic patterns** â€” test on representative commits
 
 ---
 
 ## How It Works (4 Layers)
 
 ```
-Layer 1: PARSE    → Tree-sitter builds ASTs from 19 languages
-Layer 2: STORE    → Nodes + edges saved in SQLite graph
-Layer 3: TRACE    → BFS computes blast radius of changes
-Layer 4: SERVE    → MCP exposes graph to AI assistants
+Layer 1: PARSE    â†’ Tree-sitter builds ASTs from 19 languages
+Layer 2: STORE    â†’ Nodes + edges saved in SQLite graph
+Layer 3: TRACE    â†’ BFS computes blast radius of changes
+Layer 4: SERVE    â†’ MCP exposes graph to AI assistants
 ```
 
 ### What the Graph Contains
 - **Nodes:** Files, functions, methods, classes, imports, tests
 - **Edges:** "A calls B", "X imports Y", "TestZ covers FunctionW", "ClassA extends ClassB"
 - **Metadata:** Name, type, file path, line range per node
-- **Privacy:** Structural metadata only — NO source code content in the graph
+- **Privacy:** Structural metadata only â€” NO source code content in the graph
 
 ### Supported Languages (19)
 Python, TypeScript, JavaScript, Go, Rust, Java, C#, Ruby, Kotlin, Swift, PHP, C/C++, Vue SFC, Solidity, Dart, R, Perl, Lua, Jupyter/Databricks notebooks.
@@ -82,7 +82,7 @@ Python, TypeScript, JavaScript, Go, Rust, Java, C#, Ruby, Kotlin, Swift, PHP, C/
 ### Prerequisites
 - Python 3.9+ (`python3 --version`)
 - pip or pipx installed
-- An MCP-compatible AI client (AG Kit, Claude Code, Cursor, Windsurf, Zed)
+- An MCP-compatible AI client (GitHub Vibe Kit, Claude Code, Cursor, Windsurf, Zed)
 - Git-tracked codebase (for incremental updates)
 
 ### Step 1: Install the Package
@@ -121,9 +121,9 @@ code-review-graph build
 
 | Codebase Size | Expected Build Time |
 |---------------|---------------------|
-| 500 files | 10–30 seconds |
-| 5,000 files | 2–5 minutes |
-| 27,000 files | 5–10 minutes |
+| 500 files | 10â€“30 seconds |
+| 5,000 files | 2â€“5 minutes |
+| 27,000 files | 5â€“10 minutes |
 
 ### Step 4: Enable Watch Mode (Recommended)
 
@@ -169,7 +169,7 @@ generated/**
 __fixtures__/**
 ```
 
-> Excluding generated files and build artifacts is critical — they inflate the graph with meaningless nodes.
+> Excluding generated files and build artifacts is critical â€” they inflate the graph with meaningless nodes.
 
 ### Multi-Repo Setup
 
@@ -194,8 +194,8 @@ The MCP server serves context across all registered repositories.
 This is automatic when the MCP server is active. Your AI assistant queries the graph before reading files, getting only the impacted files instead of everything.
 
 ```
-Without graph:  Changed auth/middleware.py → AI reads 200+ files → 8,200 tokens
-With graph:     Changed auth/middleware.py → Graph returns 12 impacted files → 1,000 tokens
+Without graph:  Changed auth/middleware.py â†’ AI reads 200+ files â†’ 8,200 tokens
+With graph:     Changed auth/middleware.py â†’ Graph returns 12 impacted files â†’ 1,000 tokens
 ```
 
 ### 2. Risk-Scored Change Analysis
@@ -212,7 +212,7 @@ Scores each uncommitted change by risk level:
 
 ### 3. Dead Code Detection
 
-The graph finds nodes with **no incoming edges** — no callers, no importers, no test coverage:
+The graph finds nodes with **no incoming edges** â€” no callers, no importers, no test coverage:
 
 ```bash
 # Surfaces functions/classes that are candidates for removal
@@ -244,7 +244,7 @@ Generates interactive visualization showing module clusters using community dete
 code-review-graph wiki
 ```
 
-Generates markdown wiki of codebase structure — every module, its public API, dependencies, and test coverage.
+Generates markdown wiki of codebase structure â€” every module, its public API, dependencies, and test coverage.
 
 ---
 
@@ -273,11 +273,11 @@ Generates markdown wiki of codebase structure — every module, its public API, 
 
 ---
 
-## Integration with AG Kit
+## Integration with GitHub Vibe Kit
 
 ### Complementary Skills
 
-| AG Kit Skill | How It Complements |
+| GitHub Vibe Kit Skill | How It Complements |
 |-------------------|--------------------|
 | `context-compression` | Graph reduces input context; compression reduces output verbosity |
 | `coordinator-mode` | Graph-aware workers can be dispatched with precise file lists |
@@ -288,7 +288,7 @@ Generates markdown wiki of codebase structure — every module, its public API, 
 
 ```
 1. Start fresh session for each distinct task
-2. Graph pre-filters context → AI reads only blast radius
+2. Graph pre-filters context â†’ AI reads only blast radius
 3. Context compression summarizes completed phases
 4. Memory system saves key decisions for next session
 5. Result: minimum tokens, maximum quality
@@ -298,10 +298,10 @@ Generates markdown wiki of codebase structure — every module, its public API, 
 
 ## Best Practices
 
-1. **Always run watch mode** in development — stale graphs produce stale context
-2. **Exclude generated files** — they inflate the graph with noise
-3. **Benchmark first** — measure token usage for 1 week without, 1 week with
-4. **Combine with output constraints** — graph reduces input, prompt engineering reduces output
+1. **Always run watch mode** in development â€” stale graphs produce stale context
+2. **Exclude generated files** â€” they inflate the graph with noise
+3. **Benchmark first** â€” measure token usage for 1 week without, 1 week with
+4. **Combine with output constraints** â€” graph reduces input, prompt engineering reduces output
 5. **Use `.code-review-graphignore`** for build artifacts, `node_modules`, `dist/`
-6. **Keep sessions short** — fresh sessions + graph = optimal token efficiency
+6. **Keep sessions short** â€” fresh sessions + graph = optimal token efficiency
 7. **Multi-repo registration** for microservice architectures

@@ -1,12 +1,12 @@
-# AG Kit Architecture
+# GitHub Vibe Kit Architecture
 
-> Comprehensive AI Agent Capability Expansion Toolkit — 2026.5.13
+> Comprehensive AI Agent Capability Expansion Toolkit â€” 2026.5.13
 
 ---
 
-## 📋 Overview
+## ðŸ“‹ Overview
 
-AG Kit is a modular system consisting of:
+GitHub Vibe Kit is a modular system consisting of:
 
 - **20 Specialist Agents** - Role-based AI personas (1 major upgrade in 2026.5.13)
 - **45 Skills** - Domain-specific knowledge modules with conditional loading
@@ -14,22 +14,22 @@ AG Kit is a modular system consisting of:
 
 ---
 
-## 🏗️ Directory Structure
+## ðŸ—ï¸ Directory Structure
 
 ```plaintext
 .agent/
-├── ARCHITECTURE.md          # This file
-├── agents/                  # 20 Specialist Agents
-├── skills/                  # 45 Skills (with conditional loading)
-├── workflows/               # 14 Slash Commands
-├── rules/                   # Global Rules
-├── memory/                  # Persistent Memory (2026.5.13)
-└── scripts/                 # Master Validation Scripts
+â”œâ”€â”€ ARCHITECTURE.md          # This file
+â”œâ”€â”€ agents/                  # 20 Specialist Agents
+â”œâ”€â”€ skills/                  # 45 Skills (with conditional loading)
+â”œâ”€â”€ workflows/               # 14 Slash Commands
+â”œâ”€â”€ rules/                   # Global Rules
+â”œâ”€â”€ memory/                  # Persistent Memory (2026.5.13)
+â””â”€â”€ scripts/                 # Master Validation Scripts
 ```
 
 ---
 
-## 🤖 Agents (20)
+## ðŸ¤– Agents (20)
 
 Specialist AI personas for different domains.
 
@@ -58,7 +58,7 @@ Specialist AI personas for different domains.
 
 ---
 
-## 🧩 Skills (45)
+## ðŸ§© Skills (45)
 
 Modular knowledge domains that agents can load on-demand based on task context. Each skill has a `when_to_use` frontmatter field for conditional/intelligent loading.
 
@@ -182,7 +182,7 @@ Modular knowledge domains that agents can load on-demand based on task context. 
 
 ---
 
-## 🔄 Workflows (14)
+## ðŸ”„ Workflows (14)
 
 Slash command procedures. Invoke with `/command`.
 
@@ -205,11 +205,11 @@ Slash command procedures. Invoke with `/command`.
 
 ---
 
-## 🎯 Skill Loading Protocol (2026.5.13 — Conditional)
+## ðŸŽ¯ Skill Loading Protocol (2026.5.13 â€” Conditional)
 
 ```plaintext
-User Request → Check `when_to_use` frontmatter → Match? → Load full SKILL.md
-                                                    ↓ No match
+User Request â†’ Check `when_to_use` frontmatter â†’ Match? â†’ Load full SKILL.md
+                                                    â†“ No match
                                                  Skip (save tokens)
 ```
 
@@ -217,10 +217,10 @@ User Request → Check `when_to_use` frontmatter → Match? → Load full SKILL.
 
 ```plaintext
 skill-name/
-├── SKILL.md           # (Required) Metadata, when_to_use & instructions
-├── scripts/           # (Optional) Python/Bash scripts
-├── references/        # (Optional) Templates, docs
-└── assets/            # (Optional) Images, logos
+â”œâ”€â”€ SKILL.md           # (Required) Metadata, when_to_use & instructions
+â”œâ”€â”€ scripts/           # (Optional) Python/Bash scripts
+â”œâ”€â”€ references/        # (Optional) Templates, docs
+â””â”€â”€ assets/            # (Optional) Images, logos
 ```
 
 ### Required Frontmatter Fields
@@ -243,7 +243,7 @@ allowed-tools: Read, Grep, Glob
 
 ---
 
-## � Scripts (2)
+## ï¿½ Scripts (2)
 
 Master validation scripts that orchestrate skill-level scripts.
 
@@ -288,7 +288,7 @@ For details, see [scripts/README.md](scripts/README.md)
 
 ---
 
-## 📊 Statistics
+## ðŸ“Š Statistics
 
 | Metric              | Value                             |
 | ------------------- | --------------------------------- |
@@ -301,7 +301,7 @@ For details, see [scripts/README.md](scripts/README.md)
 
 ---
 
-## 🔗 Quick Reference
+## ðŸ”— Quick Reference
 
 | Need     | Agent                 | Skills                                |
 | -------- | --------------------- | ------------------------------------- |

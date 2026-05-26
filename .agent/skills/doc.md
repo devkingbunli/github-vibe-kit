@@ -1,18 +1,18 @@
-# AG Kit Skills
+# GitHub Vibe Kit Skills
 
-> **Guide to creating and using Skills in the AG Kit**
-
----
-
-## 📋 Overview
-
-While AG Kit's base models (like Gemini) are powerful generalists, they don't know your specific project context or your team's standards. Loading every rule or tool into the agent's context window leads to "tool bloat," higher costs, latency, and confusion.
-
-**AG Kit Skills** solve this through **Progressive Disclosure**. A Skill is a package of specialized knowledge that remains dormant until needed. This information is only loaded into the agent's context when your specific request matches the skill's description.
+> **Guide to creating and using Skills in the GitHub Vibe Kit**
 
 ---
 
-## 📁 Structure and Scope
+## ðŸ“‹ Overview
+
+While GitHub Vibe Kit's base models (like Gemini) are powerful generalists, they don't know your specific project context or your team's standards. Loading every rule or tool into the agent's context window leads to "tool bloat," higher costs, latency, and confusion.
+
+**GitHub Vibe Kit Skills** solve this through **Progressive Disclosure**. A Skill is a package of specialized knowledge that remains dormant until needed. This information is only loaded into the agent's context when your specific request matches the skill's description.
+
+---
+
+## ðŸ“ Structure and Scope
 
 Skills are folder-based packages. You can define these scopes based on your needs:
 
@@ -24,15 +24,15 @@ Skills are folder-based packages. You can define these scopes based on your need
 
 ```
 my-skill/
-├── SKILL.md      # (Required) Metadata & instructions
-├── scripts/      # (Optional) Python or Bash scripts
-├── references/   # (Optional) Text, documentation, templates
-└── assets/       # (Optional) Images or logos
+â”œâ”€â”€ SKILL.md      # (Required) Metadata & instructions
+â”œâ”€â”€ scripts/      # (Optional) Python or Bash scripts
+â”œâ”€â”€ references/   # (Optional) Text, documentation, templates
+â””â”€â”€ assets/       # (Optional) Images or logos
 ```
 
 ---
 
-## 🔍 Example 1: Code Review Skill
+## ðŸ” Example 1: Code Review Skill
 
 This is an instruction-only skill; you only need to create the `SKILL.md` file.
 
@@ -112,7 +112,7 @@ The Agent will automatically identify the `code-review` skill, load the informat
 
 ---
 
-## 📄 Example 2: License Header Skill
+## ðŸ“„ Example 2: License Header Skill
 
 This skill uses a reference file in the `resources/` (or `references/`) directory.
 
@@ -165,13 +165,13 @@ The Agent will read the template, convert the comments to Python style, and auto
 
 ---
 
-## 🎯 Conclusion
+## ðŸŽ¯ Conclusion
 
 By creating Skills, you transform a general AI model into an expert for your project:
 
-- ✅ Systematize best practices
-- ✅ Adhere to code review rules
-- ✅ Automatically add license headers
-- ✅ The Agent automatically knows how to work with your team
+- âœ… Systematize best practices
+- âœ… Adhere to code review rules
+- âœ… Automatically add license headers
+- âœ… The Agent automatically knows how to work with your team
 
 Instead of constantly reminding the AI to "remember to add the license" or "fix the commit format," now the Agent will do it automatically!
